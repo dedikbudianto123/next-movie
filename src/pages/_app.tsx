@@ -1,4 +1,4 @@
-import { AppComponent } from 'next/dist/next-server/lib/router/router';
+import App, { AppInitialProps, AppProps } from 'next/app';
 
 import '@/styles/global.css';
 
@@ -7,8 +7,20 @@ import '@/styles/global.css';
  * @param {AppProps} props - apps props
  * @returns {ReactNode}
  */
-const App: AppComponent = ({ Component, pageProps }) => (
+const MyApp = ({ Component, pageProps }: AppProps) => (
   <Component {...pageProps} />
 );
 
-export default App;
+MyApp.getInitialProps = async (appContext): Promise<AppInitialProps> => {
+  const appProps = await App.getInitialProps(appContext);
+
+  return {
+    ...appProps,
+    pageProps: {
+      ...appProps.pageProps,
+      isLoggedIn: true
+    }
+  };
+};
+
+export default MyApp;
