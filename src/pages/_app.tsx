@@ -1,5 +1,14 @@
+import { AppComponent } from 'next/dist/next-server/lib/router/router';
+
 import '@/styles/global.css';
 
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
+/**
+ * My APP
+ * @param {AppProps} props - apps props
+ * @returns {ReactNode}
+ */
+const App: AppComponent = ({ Component, pageProps }) => (
+  <Component {...pageProps} />
+);
+
+export default App;
