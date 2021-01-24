@@ -1,20 +1,6 @@
 import { GetServerSideProps } from 'next';
-import { FC } from 'react';
 
-/**
- * Movie Detail
- * @param {props} props - props page
- * @returns {ReactNode}
- */
-const MovieDetail: FC<{ id: string; isLoggedIn: boolean }> = ({
-  id,
-  isLoggedIn
-}) => (
-  <>
-    <div>Movie Detail {id}</div>
-    <div>is login ? {isLoggedIn ? `true` : `false`}</div>
-  </>
-);
+import MovieDetailContainer from '@/container/movie/movie-detail.container';
 
 /**
  * Get Server Side Props Lifecycle
@@ -29,4 +15,4 @@ export const getServerSideProps: GetServerSideProps<{
   }
 });
 
-export default MovieDetail;
+export default MovieDetailContainer;
