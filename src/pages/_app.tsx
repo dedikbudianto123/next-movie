@@ -1,6 +1,7 @@
 import App, { AppInitialProps, AppProps } from 'next/app';
 
 import '@/styles/css/global.css';
+import { csrfToken } from '@/utils/modules/csrf';
 
 /**
  * My APP
@@ -8,7 +9,7 @@ import '@/styles/css/global.css';
  * @returns {ReactNode}
  */
 const MyApp = ({ Component, pageProps }: AppProps) => (
-  <Component {...pageProps} />
+  <Component {...pageProps} csrf={csrfToken} />
 );
 
 MyApp.getInitialProps = async (appContext): Promise<AppInitialProps> => {
