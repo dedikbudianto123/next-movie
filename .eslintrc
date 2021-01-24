@@ -65,6 +65,8 @@
                 ]
             }
         ],
+        // custom rules
+        "class-methods-use-this": "off",
         "prettier/prettier":[
             "error",
             {
@@ -160,7 +162,10 @@
                     {
                         "avoidEscape":true
                     }
-                ]
+                ],
+                // Custom Rules
+                "no-unused-vars": "off",
+                "@typescript-eslint/no-unused-vars": ["error"]
             }
         }
     ],
