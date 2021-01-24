@@ -1,17 +1,20 @@
 import { sign } from 'cookie-signature';
-import { NextApiHandler } from 'next';
+import { GetServerSideProps, NextApiHandler } from 'next';
 
 import BuilderAbstract from '@/utils/abstract/builder.abstract';
 import { VerifiedIsNotEmpty } from '@/utils/helper/validator.helper';
 import { CSRF_DEFAULT_OPTIONS } from '@/utils/modules/csrf/constant/csrf.constant';
+import CSRFGenerator from '@/utils/modules/csrf/helper/csrf-generator.helper';
+import {
+  CSRFSetupAPIHelper,
+  CSRFSetupWebHelper
+} from '@/utils/modules/csrf/helper/csrf-setup.helper';
+import CSRFTokens from '@/utils/modules/csrf/helper/csrf-tokens.helper';
 import {
   ICSRFBuilder,
   ICSRFMiddleware,
   ICSRFOptions
 } from '@/utils/modules/csrf/interface/csrf.interface';
-
-import CSRFGenerator from '../helper/csrf-generator.helper';
-import CSRFTokens from '../helper/csrf-tokens.helper';
 
 /**
  * CSRF Builder
@@ -34,7 +37,11 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
    * @returns {string}
    */
   private get csrfSecret(): string {
-    return CSRFTokens.getInstance().secretSync();
+    if (typeof window === `undefined`) {
+      return CSRFTokens.getInstance().secretSync();
+    }
+
+    return ``;
   }
 
   /**
@@ -42,9 +49,12 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
    * @returns {string}
    */
   private get csrfToken(): string {
-    const { csrfSecret, options } = this;
+    if (typeof window === `undefined`) {
+      const { csrfSecret, options } = this;
+      return sign(CSRFTokens.getInstance().create(csrfSecret), options.secret);
+    }
 
-    return sign(CSRFTokens.getInstance().create(csrfSecret), options.secret);
+    return ``;
   }
 
   /**
@@ -66,7 +76,7 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
    * @returns {ICSRFBuilder}
    */
   execute(): ICSRFBuilder {
-    const { csrfSecret, csrfToken, options } = this;
+    const { csrfSecret, csrfToken, options, setupCSRFWeb } = this;
 
     // generate options for the csrf middleware
     const csrfOptions: ICSRFMiddleware = {
@@ -77,8 +87,33 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
     // generate middleware to verify CSRF token with the CSRF as parameter
     return {
       csrfToken,
-      csrf: (handler: NextApiHandler) => CSRFGenerator(handler, csrfOptions)
+      csrf: (handler: NextApiHandler) => CSRFGenerator(handler, csrfOptions),
+      setupAPI: (handler: NextApiHandler) =>
+        CSRFSetupAPIHelper(handler, {
+          csrfSecret: csrfOptions.csrfSecret,
+          secret: csrfOptions.secret,
+          tokenKey: csrfOptions.tokenKey,
+          cookieOptions: csrfOptions.cookieOptions
+        }),
+      setupWeb: setupCSRFWeb<any>(csrfOptions)
     };
+  }
+
+  /**
+   * Setup CSRF Web
+   * @param {ICSRFMiddleware} options - csrf options
+   * @returns {(handler: GetServerSideProps<P>) => GetServerSideProps<P>}
+   */
+  public setupCSRFWeb<P>(
+    options: ICSRFMiddleware
+  ): (handler: GetServerSideProps<P>) => GetServerSideProps<P> {
+    return (handler: GetServerSideProps<P>): GetServerSideProps<P> =>
+      CSRFSetupWebHelper<P>(handler, {
+        csrfSecret: options.csrfSecret,
+        secret: options.secret,
+        tokenKey: options.tokenKey,
+        cookieOptions: options.cookieOptions
+      });
   }
 
   /**

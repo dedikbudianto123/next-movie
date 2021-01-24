@@ -1,5 +1,5 @@
 import { CookieSerializeOptions } from 'cookie';
-import { NextApiHandler } from 'next';
+import { GetServerSideProps, NextApiHandler } from 'next';
 
 /**
  * CSRF Options Interface
@@ -28,11 +28,23 @@ export interface ICSRFMiddleware extends Pick<ICSRFOptions, 'secret'> {
 }
 
 /**
+ * CSRF Setup Middleware
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.01.24
+ */
+export type ICSRFSetupMiddleware = Pick<
+  ICSRFMiddleware,
+  'csrfSecret' | 'secret' | 'tokenKey' | 'cookieOptions'
+>;
+
+/**
  * CSRF Builder
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.24
  */
 export interface ICSRFBuilder {
   csrfToken: string;
-  csrf: (handler: NextApiHandler) => NextApiHandler<any>;
+  setupAPI(handler: NextApiHandler): NextApiHandler;
+  setupWeb(handler: GetServerSideProps<any>): GetServerSideProps<any>;
+  csrf(handler: NextApiHandler): NextApiHandler<any>;
 }

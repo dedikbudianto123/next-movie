@@ -1,6 +1,6 @@
 import { NextApiHandler } from 'next';
 
-import { csrf, csrfToken } from '@/utils/modules/csrf';
+import { csrf } from '@/utils/modules/csrf';
 
 /**
  * Handler API
@@ -10,7 +10,7 @@ import { csrf, csrfToken } from '@/utils/modules/csrf';
  */
 const handler: NextApiHandler = (_, res): void => {
   res.statusCode = 200;
-  res.json({ name: `John Doe`, csrfToken });
+  res.json({ name: `John Doe` });
 };
 
 export default csrf(handler);
