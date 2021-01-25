@@ -3,7 +3,7 @@ import { sign, unsign } from 'cookie-signature';
 import { NextApiHandler } from 'next';
 
 import { ICSRFMiddleware } from '@/utils/modules/csrf/interface/csrf.interface';
-import ErrorApps from '@/utils/modules/error';
+import { ErrorApps } from '@/utils/modules/error';
 
 import CSRFCookie from './csrf-cookie.helper';
 import CSRFTokens from './csrf-tokens.helper';

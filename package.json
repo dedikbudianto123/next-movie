@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@types/redux-saga": "0.10.5",
+    "axios": "0.21.1",
     "cookie": "0.4.1",
     "cookie-signature": "1.1.0",
     "cors": "2.8.5",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "@types/axios": "0.14.0",
     "@types/cookie": "0.4.0",
     "@types/cookie-signature": "1.0.3",
     "@types/cors": "2.8.9",
