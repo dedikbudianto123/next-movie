@@ -15,5 +15,3 @@ export const FetchApiErrorHelper = (error: AxiosError): ErrorApps => {
 
   return new ErrorApps(500, `Error Unknown`);
 };
-
-export default NameClass;
