@@ -9,7 +9,7 @@ export const CSRF_DEFAULT_OPTIONS: Omit<
   cookieOptions: {
     httpOnly: true,
     path: `/`,
-    secure: process.env.NODE_ENV === `production`
+    secure: process.env.IS_PRODUCTION === `true`
   },
   ignoredMethods: [`GET`, `HEAD`, `OPTIONS`]
 };

@@ -1,16 +1,20 @@
+import { GetServerSideProps } from 'next';
+
 import MovieDetailContainer from '@/container/movie/movie-detail.container';
-import { setupWeb } from '@/utils/modules/csrf';
 
 /**
  * Get Server Side Props Lifecycle
  * @param {GetServerSidePropsContext} context - context page
  * @returns {Promise<GetServerSidePropsResult>}
  */
+export const getServerSideProps: GetServerSideProps = async (param) => {
+  const { setupWeb } = require(`@/utils/modules/csrf`);
 
-export const getServerSideProps = setupWeb(async ({ params: { movieID } }) => ({
-  props: {
-    id: movieID as string
-  }
-}));
+  return setupWeb(async ({ params: { movieID } }) => ({
+    props: {
+      id: movieID as string
+    }
+  }))(param);
+};
 
 export default MovieDetailContainer;
