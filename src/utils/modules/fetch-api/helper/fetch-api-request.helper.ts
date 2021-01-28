@@ -25,7 +25,7 @@ function request<Response>(
 ): IFetchAPIPromise<Response> {
   return new Promise<IFetchAPIResponse<Response>>((resolve, reject) => {
     instance
-      .then(({ data, ...res }) => resolve({ data, additionalData: res }))
+      .then(({ data, ...res }) => resolve({ additionalData: res, data }))
       .catch((err: AxiosError) => reject(FetchApiErrorHelper(err)));
   });
 }
@@ -51,8 +51,8 @@ export function generateRequestWithoutData<Response>(
     if (instance) {
       promiseInstance = instance({
         ...config,
-        url,
-        method: methodInstance
+        method: methodInstance,
+        url
       }) as AxiosPromise<Response>;
     } else {
       promiseInstance = axios[methodAxios](url, config);
@@ -85,8 +85,8 @@ export function generateRequestWithData<Response, Parameter>(
       promiseInstance = instance({
         ...config,
         data,
-        url,
-        method: methodInstance
+        method: methodInstance,
+        url
       }) as AxiosPromise<Response>;
     } else {
       promiseInstance = axios[methodAxios](url, data, config);

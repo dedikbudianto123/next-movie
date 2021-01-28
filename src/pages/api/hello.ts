@@ -12,8 +12,8 @@ import { csrf } from '@/utils/modules/csrf';
 const handler: NextApiHandler = async (req, res): Promise<void> => {
   await cors(req, res, {
     methods: [`GET`],
-    origin: `http://localhost:3000`,
-    optionsSuccessStatus: 200
+    optionsSuccessStatus: 200,
+    origin: `http://localhost:3000`
   });
 
   res.statusCode = 200;
