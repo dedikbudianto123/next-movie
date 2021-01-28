@@ -4,6 +4,6 @@
  * @since 2021.01.27
  */
 export interface IRootObjectAPIErrorResponse {
-  Response: string;
   Error: string;
+  Response: string;
 }

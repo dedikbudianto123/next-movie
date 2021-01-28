@@ -6,8 +6,8 @@ import { AxiosResponse } from 'axios';
  * @since 2021.01.25
  */
 export interface IFetchAPIResponse<T> {
-  data: T;
   additionalData: Omit<AxiosResponse<T>, 'data'>;
+  data: T;
 }
 
 /**

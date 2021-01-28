@@ -14,29 +14,29 @@ export interface IRatingApiResponse {
  * @since 2021.01.27
  */
 export interface IRootObjectDetailAPIResponse {
-  Title: string;
-  Year: string;
-  Rated: string;
-  Released: string;
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Writer: string;
   Actors: string;
-  Plot: string;
-  Language: string;
-  Country: string;
   Awards: string;
-  Poster: string;
-  Ratings: IRatingApiResponse[];
+  BoxOffice: string;
+  Country: string;
+  DVD: string;
+  Director: string;
+  Genre: string;
+  Language: string;
   Metascore: string;
+  Plot: string;
+  Poster: string;
+  Production: string;
+  Rated: string;
+  Ratings: IRatingApiResponse[];
+  Released: string;
+  Response: string;
+  Runtime: string;
+  Title: string;
+  Type: string;
+  Website: string;
+  Writer: string;
+  Year: string;
+  imdbID: string;
   imdbRating: string;
   imdbVotes: string;
-  imdbID: string;
-  Type: string;
-  DVD: string;
-  BoxOffice: string;
-  Production: string;
-  Website: string;
-  Response: string;
 }

@@ -4,11 +4,11 @@
  * @since 2021.01.27
  */
 export interface ISearchItemAPIResponse {
+  Poster: string;
   Title: string;
+  Type: string;
   Year: string;
   imdbID: string;
-  Type: string;
-  Poster: string;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface ISearchItemAPIResponse {
  * @since 2021.01.27
  */
 export interface IRootObjectListAPIResponse {
+  Response: string;
   Search: ISearchItemAPIResponse[];
   totalResults: string;
-  Response: string;
 }

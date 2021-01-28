@@ -21,9 +21,9 @@ export type ICorsHandler = (
 export type ICorsFunction<T = Cors.CorsRequest> = (
   req: T,
   res: {
-    statusCode?: number;
-    setHeader(key: string, value: string): any;
     end(): any;
+    setHeader(key: string, value: string): any;
+    statusCode?: number;
   },
   next: (err?: any) => any
 ) => void;

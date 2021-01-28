@@ -7,11 +7,11 @@ import { GetServerSideProps, NextApiHandler } from 'next';
  * @since 2021.01.24
  */
 export interface ICSRFOptions {
-  secret: string;
-  ignoredMethods?: string[];
-  csrfErrorMessage?: string;
-  tokenKey?: string;
   cookieOptions?: CookieSerializeOptions;
+  csrfErrorMessage?: string;
+  ignoredMethods?: string[];
+  secret: string;
+  tokenKey?: string;
 }
 
 /**
@@ -20,11 +20,11 @@ export interface ICSRFOptions {
  * @since 2021.01.24
  */
 export interface ICSRFMiddleware extends Pick<ICSRFOptions, 'secret'> {
-  csrfErrorMessage: string;
-  ignoredMethods: string[];
-  csrfSecret: string;
-  tokenKey: string;
   cookieOptions: CookieSerializeOptions;
+  csrfErrorMessage: string;
+  csrfSecret: string;
+  ignoredMethods: string[];
+  tokenKey: string;
 }
 
 /**
@@ -43,8 +43,8 @@ export type ICSRFSetupMiddleware = Pick<
  * @since 2021.01.24
  */
 export interface ICSRFBuilder {
+  csrf(handler: NextApiHandler): NextApiHandler<any>;
   csrfToken: string;
   setupAPI(handler: NextApiHandler): NextApiHandler;
   setupWeb(handler: GetServerSideProps<any>): GetServerSideProps<any>;
-  csrf(handler: NextApiHandler): NextApiHandler<any>;
 }

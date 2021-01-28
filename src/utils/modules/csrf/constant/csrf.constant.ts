@@ -4,12 +4,12 @@ export const CSRF_DEFAULT_OPTIONS: Omit<
   ICSRFMiddleware,
   'secret' | 'csrfSecret'
 > = {
-  tokenKey: `XSRF-TOKEN`,
-  csrfErrorMessage: `Invalid CSRF token`,
   cookieOptions: {
     httpOnly: true,
     path: `/`,
     secure: process.env.IS_PRODUCTION === `true`
   },
-  ignoredMethods: [`GET`, `HEAD`, `OPTIONS`]
+  csrfErrorMessage: `Invalid CSRF token`,
+  ignoredMethods: [`GET`, `HEAD`, `OPTIONS`],
+  tokenKey: `XSRF-TOKEN`
 };

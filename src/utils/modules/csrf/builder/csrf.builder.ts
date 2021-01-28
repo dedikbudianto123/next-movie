@@ -86,14 +86,14 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
 
     // generate middleware to verify CSRF token with the CSRF as parameter
     return {
-      csrfToken,
       csrf: (handler: NextApiHandler) => CSRFGenerator(handler, csrfOptions),
+      csrfToken,
       setupAPI: (handler: NextApiHandler) =>
         CSRFSetupAPIHelper(handler, {
+          cookieOptions: csrfOptions.cookieOptions,
           csrfSecret: csrfOptions.csrfSecret,
           secret: csrfOptions.secret,
-          tokenKey: csrfOptions.tokenKey,
-          cookieOptions: csrfOptions.cookieOptions
+          tokenKey: csrfOptions.tokenKey
         }),
       setupWeb: setupCSRFWeb<any>(csrfOptions)
     };
@@ -109,10 +109,10 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
   ): (handler: GetServerSideProps<P>) => GetServerSideProps<P> {
     return (handler: GetServerSideProps<P>): GetServerSideProps<P> =>
       CSRFSetupWebHelper<P>(handler, {
+        cookieOptions: options.cookieOptions,
         csrfSecret: options.csrfSecret,
         secret: options.secret,
-        tokenKey: options.tokenKey,
-        cookieOptions: options.cookieOptions
+        tokenKey: options.tokenKey
       });
   }
 

@@ -4,21 +4,21 @@ import { IRootObjectDetailAPIResponse } from '@/utils/interface/generated/detail
 import { IScore } from '@/utils/model/general/interface/score.interface';
 
 /**
- * Rating API Adapter
+ * Score API Adapter
  * @author Irfan Andriansyah <irfan@99.co>
  * @param {IRatingApiResponse} param - param api
  * @returns {IScore | undefined}
  * @since 2021.01.27
  */
-export const RatingAPIAdapter: IAdapter<
+export const ScoreAPIAdapter: IAdapter<
   Pick<IRootObjectDetailAPIResponse, 'Metascore' | 'imdbRating' | 'imdbVotes'>,
   IScore
 > = ({ imdbRating, imdbVotes, Metascore: metaScore }) => {
   if (BulkVerifiedIsNotEmpty([imdbRating, imdbVotes, metaScore])) {
     return {
       imdbRating,
-      metaScore,
-      imdbVotes
+      imdbVotes,
+      metaScore
     };
   }
 

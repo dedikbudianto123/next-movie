@@ -1,6 +1,6 @@
 import App, { AppInitialProps, AppProps } from 'next/app';
 
-import '@/styles/css/global.css';
+import '@/utils/styles/css/global.css';
 import { csrfToken } from '@/utils/modules/csrf';
 
 /**

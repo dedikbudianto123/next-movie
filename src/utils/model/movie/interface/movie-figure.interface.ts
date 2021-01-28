@@ -4,7 +4,7 @@
  * @since 2021.01.27
  */
 export interface IMovieFigure {
+  actors: string;
   director: string;
   writter: string;
-  actors: string;
 }
