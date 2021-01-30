@@ -23,7 +23,8 @@
         "require-jsdoc-except",
         "simple-import-sort",
         "sort-destructure-keys",
-        "sort-keys-fix"
+        "sort-keys-fix",
+        "react-hooks"
     ],
     "extends":[
         "airbnb",
@@ -67,6 +68,8 @@
             }
         ],
         // custom rules
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "global-require": "off",
         "class-methods-use-this": "off",
         "prettier/prettier":[
