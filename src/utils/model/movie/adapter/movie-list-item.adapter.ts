@@ -15,9 +15,10 @@ import { IMovieListItem } from '@/utils/model/movie/interface/movie-list.interfa
 export const MovieListItemAPIAdapter: IAdapter<
   ISearchItemAPIResponse,
   IMovieListItem
-> = ({ Poster: poster, Title: title, Type: type, Year: year }) => {
+> = ({ imdbID: id, Poster: poster, Title: title, Type: type, Year: year }) => {
   if (BulkVerifiedIsNotEmpty([poster, title, type, year])) {
     return {
+      id,
       poster: poster === `N/A` ? MOVIE_NOT_FOUND_POSTER : poster,
       title,
       type: type as IMovieType,

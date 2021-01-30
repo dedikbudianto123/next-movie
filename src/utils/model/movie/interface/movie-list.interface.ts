@@ -17,6 +17,7 @@ export interface IMovieList {
  * @since 2021.01.27
  */
 export interface IMovieListItem {
+  id: string;
   poster: string;
   title: string;
   type: IMovieType;

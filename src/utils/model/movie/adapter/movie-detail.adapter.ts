@@ -3,6 +3,7 @@ import { IAdapter } from '@/utils/interface/general/adapter.interface';
 import { IRootObjectDetailAPIResponse } from '@/utils/interface/generated/detail-api.interface';
 import { IMovieDetail } from '@/utils/model/movie/interface/movie-detail.interface';
 import { IMovieListItem } from '@/utils/model/movie/interface/movie-list.interface';
+import { ErrorApps } from '@/utils/modules/error';
 
 import { RatingAPIAdapter } from '../../general/adapter/rating.adapter';
 import { ScoreAPIAdapter } from '../../general/adapter/score.adapter';
@@ -127,5 +128,5 @@ export const MovieDetailAPIAdapter: IAdapter<
     };
   }
 
-  return undefined;
+  throw new ErrorApps(500, `basic info not generated`);
 };
