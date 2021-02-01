@@ -10,6 +10,9 @@ export const CSRF_DEFAULT_OPTIONS: Omit<
     secure: process.env.IS_PRODUCTION === `true`
   },
   csrfErrorMessage: `Invalid CSRF token`,
-  ignoredMethods: [`GET`, `HEAD`, `OPTIONS`],
+  ignoredMethods:
+    process.env.IS_PRODUCTION === `true`
+      ? [`HEAD`, `OPTIONS`]
+      : [`HEAD`, `OPTIONS`, `GET`, `POST`, `PUT`, `PATCH`],
   tokenKey: `XSRF-TOKEN`
 };

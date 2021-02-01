@@ -1,5 +1,10 @@
 import { sign } from 'cookie-signature';
-import { GetServerSideProps, NextApiHandler } from 'next';
+import {
+  GetServerSideProps,
+  NextApiHandler,
+  NextApiRequest,
+  NextApiResponse
+} from 'next';
 
 import BuilderAbstract from '@/utils/abstract/builder.abstract';
 import { VerifiedIsNotEmpty } from '@/utils/helper/validator.helper';
@@ -33,69 +38,50 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
   }
 
   /**
-   * Getter CSRF Secret
-   * @returns {string}
-   */
-  private get csrfSecret(): string {
-    if (typeof window === `undefined`) {
-      return CSRFTokens.getInstance().secretSync();
-    }
-
-    return ``;
-  }
-
-  /**
-   * Getter CSRF Token
-   * @returns {string}
-   */
-  private get csrfToken(): string {
-    if (typeof window === `undefined`) {
-      const { csrfSecret, options } = this;
-      return sign(CSRFTokens.getInstance().create(csrfSecret), options.secret);
-    }
-
-    return ``;
-  }
-
-  /**
    * Setter Options
    * @param {ICSRFOptions} option - user options
    * @returns {CSRFBuilder}
    */
   public setOptions(option: ICSRFOptions): this {
+    const date = new Date();
+    date.setDate(date.getDate() + 1);
+
     this.options = {
       ...CSRF_DEFAULT_OPTIONS,
       ...option
     };
 
+    this.options.cookieOptions.expires = date;
     return this;
   }
 
   /**
-   * Execute
-   * @returns {ICSRFBuilder}
+   * CSRF Decorator
+   * @param {ICSRFMiddleware} csrfOptions - csrf option
+   * @returns {MethodDecorator}
    */
-  execute(): ICSRFBuilder {
-    const { csrfSecret, csrfToken, options, setupCSRFWeb } = this;
+  private csrfDecorator(csrfOptions: ICSRFMiddleware): MethodDecorator {
+    return <T = NextApiHandler>(
+      _: Record<string, unknown>,
+      __: string | symbol,
+      descriptor: TypedPropertyDescriptor<T>
+    ) => {
+      const clone = { ...descriptor };
+      const childFunction = (clone.value as unknown) as NextApiHandler;
 
-    // generate options for the csrf middleware
-    const csrfOptions: ICSRFMiddleware = {
-      ...options,
-      csrfSecret
-    };
+      if (VerifiedIsNotEmpty(clone.value)) {
+        clone.value = (((
+          request: NextApiRequest,
+          response: NextApiResponse
+        ) => {
+          CSRFGenerator(
+            (req, res) => childFunction.apply(this, [req, res]),
+            csrfOptions
+          )(request, response);
+        }) as unknown) as T;
+      }
 
-    // generate middleware to verify CSRF token with the CSRF as parameter
-    return {
-      csrf: (handler: NextApiHandler) => CSRFGenerator(handler, csrfOptions),
-      csrfToken,
-      setupAPI: (handler: NextApiHandler) =>
-        CSRFSetupAPIHelper(handler, {
-          cookieOptions: csrfOptions.cookieOptions,
-          csrfSecret: csrfOptions.csrfSecret,
-          secret: csrfOptions.secret,
-          tokenKey: csrfOptions.tokenKey
-        }),
-      setupWeb: setupCSRFWeb<any>(csrfOptions)
+      return clone;
     };
   }
 
@@ -114,6 +100,44 @@ class CSRFBuilder extends BuilderAbstract<ICSRFBuilder> {
         secret: options.secret,
         tokenKey: options.tokenKey
       });
+  }
+
+  /**
+   * Execute
+   * @returns {ICSRFBuilder}
+   */
+  execute(): ICSRFBuilder {
+    const { csrfDecorator, options, setupCSRFWeb } = this;
+
+    // generate CSRF secret
+    const csrfSecret = CSRFTokens.getInstance().secretSync();
+
+    // generate CSRF token
+    const csrfToken = sign(
+      CSRFTokens.getInstance().create(csrfSecret),
+      options.secret
+    );
+
+    // generate options for the csrf middleware
+    const csrfOptions: ICSRFMiddleware = {
+      ...options,
+      csrfSecret
+    };
+
+    // generate middleware to verify CSRF token with the CSRF as parameter
+    return {
+      csrf: (handler: NextApiHandler) => CSRFGenerator(handler, csrfOptions),
+      csrfDecorator: csrfDecorator(csrfOptions),
+      csrfToken,
+      setupAPI: (handler: NextApiHandler) =>
+        CSRFSetupAPIHelper(handler, {
+          cookieOptions: csrfOptions.cookieOptions,
+          csrfSecret: csrfOptions.csrfSecret,
+          secret: csrfOptions.secret,
+          tokenKey: csrfOptions.tokenKey
+        }),
+      setupWeb: setupCSRFWeb<any>(csrfOptions)
+    };
   }
 
   /**

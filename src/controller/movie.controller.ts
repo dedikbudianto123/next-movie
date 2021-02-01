@@ -5,6 +5,8 @@ import {
   BulkVerifiedIsNotNull,
   VerifiedIsNotEmpty
 } from '@/utils/helper/validator.helper';
+import { UseCors } from '@/utils/modules/cors';
+import { UseCSRF } from '@/utils/modules/csrf';
 import { ErrorApps } from '@/utils/modules/error';
 import { NextAPIGet } from '@/utils/modules/next-api';
 import MovieRepositoryImplementation from '@/utils/repository/rest-api/movie';
@@ -23,19 +25,21 @@ class MovieController {
    * @param {NextApiResponse} res - response api
    * @returns {void}
    */
+  @UseCSRF
+  @UseCors()
   @NextAPIGet()
-  getMovieList(
-    { query: { keyword, page } }: NextApiRequest,
-    res: NextApiResponse
-  ): void {
+  getMovieList(req: NextApiRequest, res: NextApiResponse): void {
     const instance = MovieRepositoryImplementation.singleton();
+    const {
+      query: { keyword, page }
+    } = req;
 
     if (BulkVerifiedIsNotNull([keyword, page])) {
       instance
         .getMovieList(keyword as string, parseInt(`${page}`, 10))
         .then((item) => {
-          res.json(item);
           res.statusCode = 200;
+          res.json(item);
         })
         .catch((e) => {
           res.statusCode = 500;
@@ -63,6 +67,8 @@ class MovieController {
    * @param {NextApiResponse} res - response api
    * @returns {void}
    */
+  @UseCSRF
+  @UseCors()
   @NextAPIGet()
   getMovieDetail(
     { query: { id } }: NextApiRequest,
@@ -74,8 +80,8 @@ class MovieController {
       instance
         .getMovieDetail(id as string)
         .then((item) => {
-          res.json(item);
           res.statusCode = 200;
+          res.json(item);
         })
         .catch((e) => {
           res.statusCode = 500;

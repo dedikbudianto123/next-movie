@@ -44,6 +44,7 @@ export type ICSRFSetupMiddleware = Pick<
  */
 export interface ICSRFBuilder {
   csrf(handler: NextApiHandler): NextApiHandler<any>;
+  csrfDecorator: MethodDecorator;
   csrfToken: string;
   setupAPI(handler: NextApiHandler): NextApiHandler;
   setupWeb(handler: GetServerSideProps<any>): GetServerSideProps<any>;
