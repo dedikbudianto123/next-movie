@@ -33,7 +33,7 @@ const CSRFGenerator = (
     const tokenFromCookieUnsigned = unsign(tokenFromCookie, secret);
 
     if (!tokenFromCookieUnsigned) {
-      throw new ErrorApps(403, csrfErrorMessage);
+      throw new ErrorApps(403, `cookies not available`);
     }
 
     // verify CSRF token

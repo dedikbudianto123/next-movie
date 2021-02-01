@@ -9,7 +9,7 @@ import { IMovieListItem } from './movie-list.interface';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.27
  */
-export interface IMovieDetail extends IMovieListItem {
+export interface IMovieDetail extends Omit<IMovieListItem, 'id'> {
   figure?: IMovieFigure;
   genre: string;
   plot: string;
