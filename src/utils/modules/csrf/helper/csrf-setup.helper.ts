@@ -18,20 +18,31 @@ import CSRFTokens from './csrf-tokens.helper';
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.24
  */
+export const GenerateRefreshTokenHelper = ({
+  cookieOptions,
+  csrfSecret,
+  secret,
+  tokenKey
+}: ICSRFSetupMiddleware): string => {
+  const reqCsrfToken = CSRFTokens.getInstance().create(csrfSecret);
+  const reqCsrfTokenSigned = sign(reqCsrfToken, secret);
+
+  return serialize(tokenKey, reqCsrfTokenSigned, cookieOptions);
+};
+
+/**
+ * CSRF Setup API Helper
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.01.24
+ */
 export const CSRFSetupAPIHelper = (
   handler: NextApiHandler,
-  { cookieOptions, csrfSecret, secret, tokenKey }: ICSRFSetupMiddleware
+  config: ICSRFSetupMiddleware
 ): NextApiHandler => async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  const reqCsrfToken = CSRFTokens.getInstance().create(csrfSecret);
-  const reqCsrfTokenSigned = sign(reqCsrfToken, secret);
-
-  res.setHeader(
-    `Set-Cookie`,
-    serialize(tokenKey, reqCsrfTokenSigned, cookieOptions)
-  );
+  res.setHeader(`Set-Cookie`, GenerateRefreshTokenHelper(config));
 
   return handler(req as NextApiRequest, res as NextApiResponse);
 };
@@ -43,18 +54,12 @@ export const CSRFSetupAPIHelper = (
  */
 export function CSRFSetupWebHelper<P>(
   handler: GetServerSideProps<P>,
-  { cookieOptions, csrfSecret, secret, tokenKey }: ICSRFSetupMiddleware
+  config: ICSRFSetupMiddleware
 ): GetServerSideProps<P> {
   return async (
     context: GetServerSidePropsContext
   ): Promise<GetServerSidePropsResult<P>> => {
-    const reqCsrfToken = CSRFTokens.getInstance().create(csrfSecret);
-    const reqCsrfTokenSigned = sign(reqCsrfToken, secret);
-
-    context.res.setHeader(
-      `Set-Cookie`,
-      serialize(tokenKey, reqCsrfTokenSigned, cookieOptions)
-    );
+    context.res.setHeader(`Set-Cookie`, GenerateRefreshTokenHelper(config));
 
     return handler(context);
   };
