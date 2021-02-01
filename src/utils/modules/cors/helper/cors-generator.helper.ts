@@ -29,9 +29,8 @@ export function CorsGenerator(): ICorsHandler {
  */
 export function CorsDecoratorGenerator(
   options: CorsOptions | CorsOptionsDelegate = {
-    methods: [`GET`],
-    optionsSuccessStatus: 200,
-    origin: `http://localhost:3000`
+    methods: [`GET`, `PUT`, `POST`],
+    optionsSuccessStatus: 200
   }
 ): MethodDecorator {
   return <T = NextApiHandler>(
