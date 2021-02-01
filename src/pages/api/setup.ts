@@ -1,11 +1,12 @@
 import { setupAPI } from '@/utils/modules/csrf';
 
 /**
- *
- * @param req
- * @param res
+ * Sample Setup API
+ * @param {NextApiRequest} req - request api
+ * @param {NextApiResponse} res - response api
+ * @returns {void}
  */
-const handler = (req, res) => {
+const handler = (_, res) => {
   res.statusCode = 200;
   res.json({ message: `CSRF token added to cookies` });
 };
