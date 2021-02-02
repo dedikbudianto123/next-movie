@@ -5,6 +5,7 @@ import { NextApiHandler } from 'next';
 import { ICSRFMiddleware } from '@/utils/modules/csrf/interface/csrf.interface';
 import { ErrorApps } from '@/utils/modules/error';
 
+import { NextAPICatchErrorHandler } from '../../next-api/helper/next-api-error.helper';
 import CSRFCookie from './csrf-cookie.helper';
 import CSRFTokens from './csrf-tokens.helper';
 
@@ -52,7 +53,7 @@ const CSRFGenerator = (
 
     return handler(req, res);
   } catch (e) {
-    return res.status(e.status ?? 500).json({ message: e.message });
+    return NextAPICatchErrorHandler(e)(req, res);
   }
 };
 

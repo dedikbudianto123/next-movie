@@ -3,7 +3,10 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { VerifiedIsNotEmpty } from '@/utils/helper/validator.helper';
 import { INextAPIMethod } from '@/utils/modules/next-api/interface/next-api.interface';
 
-import { NextAPIError404 } from './next-api-error.helper';
+import {
+  NextAPICatchErrorHandler,
+  NextAPIError404
+} from './next-api-error.helper';
 
 /**
  * Generate Method API
@@ -28,7 +31,11 @@ const GenerateMethodAPI = (methodType: INextAPIMethod[]) => (
         VerifiedIsNotEmpty(method) &&
         methodType.includes(method as INextAPIMethod)
       ) {
-        return childFunction.apply(this, args);
+        try {
+          return childFunction.apply(this, args);
+        } catch (e) {
+          return NextAPICatchErrorHandler(e).apply(this, args);
+        }
       }
 
       return NextAPIError404.apply(this, args);

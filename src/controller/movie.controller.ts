@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { DEFAULT_PAGINATION } from '@/utils/constant/pagination.contant';
 import {
+  BulkVerifiedIsNotEmpty,
   BulkVerifiedIsNotNull,
   VerifiedIsNotEmpty
 } from '@/utils/helper/validator.helper';
@@ -9,6 +9,8 @@ import { UseCors } from '@/utils/modules/cors';
 import { UseCSRF } from '@/utils/modules/csrf';
 import { ErrorApps } from '@/utils/modules/error';
 import { NextAPIGet } from '@/utils/modules/next-api';
+import { NextAPIPromiseCatchErrorHandler } from '@/utils/modules/next-api/helper/next-api-error.helper';
+import { NextAPIResponse } from '@/utils/modules/next-api/helper/next-api-response.helper';
 import MovieRepositoryImplementation from '@/utils/repository/rest-api/movie';
 
 /**
@@ -33,31 +35,17 @@ class MovieController {
     const {
       query: { keyword, page }
     } = req;
+    const formattedPage = parseInt(`${page}`, 10);
 
-    if (BulkVerifiedIsNotNull([keyword, page])) {
+    if (BulkVerifiedIsNotEmpty([keyword, page]) && formattedPage > 0) {
       instance
         .getMovieList(keyword as string, parseInt(`${page}`, 10))
-        .then((item) => {
-          res.statusCode = 200;
-          res.json(item);
-        })
-        .catch((e) => {
-          res.statusCode = 500;
-
-          if (e instanceof Error) {
-            res.json({ message: e.message });
-          } else if (e instanceof ErrorApps) {
-            res.json({ message: e.message });
-          } else {
-            res.json({ message: `unknown error` });
-          }
-        });
+        .then(NextAPIResponse(req, res))
+        .catch(NextAPIPromiseCatchErrorHandler(req, res));
+    } else if (formattedPage <= 0) {
+      throw new ErrorApps(500, `Page param is not number or page lower than 0`);
     } else {
-      res.statusCode = 500;
-      res.send({
-        item: [],
-        pagination: DEFAULT_PAGINATION
-      });
+      throw new ErrorApps(500, `Keyword / page not found`);
     }
   }
 
@@ -70,33 +58,19 @@ class MovieController {
   @UseCSRF
   @UseCors()
   @NextAPIGet()
-  getMovieDetail(
-    { query: { id } }: NextApiRequest,
-    res: NextApiResponse
-  ): void {
+  getMovieDetail(req: NextApiRequest, res: NextApiResponse): void {
+    const {
+      query: { id }
+    } = req;
     const instance = MovieRepositoryImplementation.singleton();
 
     if (BulkVerifiedIsNotNull([id])) {
       instance
         .getMovieDetail(id as string)
-        .then((item) => {
-          res.statusCode = 200;
-          res.json(item);
-        })
-        .catch((e) => {
-          res.statusCode = 500;
-
-          if (e instanceof Error) {
-            res.json({ message: e.message });
-          } else if (e instanceof ErrorApps) {
-            res.json({ message: e.message });
-          } else {
-            res.json({ message: `unknown error` });
-          }
-        });
+        .then(NextAPIResponse(req, res))
+        .catch(NextAPIPromiseCatchErrorHandler(req, res));
     } else {
-      res.statusCode = 500;
-      res.send(null);
+      throw new ErrorApps(500, `Movie ID not found`);
     }
   }
 

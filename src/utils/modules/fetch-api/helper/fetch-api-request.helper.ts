@@ -26,7 +26,9 @@ function request<Response>(
   return new Promise<IFetchAPIResponse<Response>>((resolve, reject) => {
     instance
       .then(({ data, ...res }) => resolve({ additionalData: res, data }))
-      .catch((err: AxiosError) => reject(FetchApiErrorHelper(err)));
+      .catch((err: AxiosError) => {
+        reject(FetchApiErrorHelper(err));
+      });
   });
 }
 
