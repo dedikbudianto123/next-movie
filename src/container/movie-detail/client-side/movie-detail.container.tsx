@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { IMovieDetailProps } from '../interface/movie-props.interface';
+import { IMovieDetailProps } from '@/container/movie-detail/interface/movie-props.interface';
 
 /**
  * Movie Detail
