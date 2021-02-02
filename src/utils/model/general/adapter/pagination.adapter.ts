@@ -1,8 +1,7 @@
 import { ValidateNumberAndParsedToInteger } from '@/utils/helper/string.helper';
 import { IAdapter } from '@/utils/interface/general/adapter.interface';
 import { IRootObjectListAPIResponse } from '@/utils/interface/generated/list-api.interface';
-
-import { IPagination } from '../interface/pagination.interface';
+import { IPagination } from '@/utils/model/general/interface/pagination.interface';
 
 /**
  * Pagination API Adapter

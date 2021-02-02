@@ -1,12 +1,12 @@
 import { VerifiedIsNotEmpty } from '@/utils/helper/validator.helper';
 import { IAdapter } from '@/utils/interface/general/adapter.interface';
 import { IRootObjectDetailAPIResponse } from '@/utils/interface/generated/detail-api.interface';
+import { RatingAPIAdapter } from '@/utils/model/general/adapter/rating.adapter';
+import { ScoreAPIAdapter } from '@/utils/model/general/adapter/score.adapter';
 import { IMovieDetail } from '@/utils/model/movie/interface/movie-detail.interface';
 import { IMovieListItem } from '@/utils/model/movie/interface/movie-list.interface';
 import { ErrorApps } from '@/utils/modules/error';
 
-import { RatingAPIAdapter } from '../../general/adapter/rating.adapter';
-import { ScoreAPIAdapter } from '../../general/adapter/score.adapter';
 import { MovieFigureAPIAdapter } from './movie-figure.adapter';
 import { MovieListItemAPIAdapter } from './movie-list-item.adapter';
 

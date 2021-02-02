@@ -1,6 +1,7 @@
 import { GetServerSideProps } from 'next';
 
 import MovieDetailContainer from '@/container/movie-detail/client-side/movie-detail.container';
+import { GetMovieDetailProps } from '@/container/movie-detail/server-side';
 
 /**
  * Get Server Side Props Lifecycle
@@ -11,9 +12,7 @@ export const getServerSideProps: GetServerSideProps = async (param) => {
   const { setupWeb } = require(`@/utils/modules/csrf`);
 
   return setupWeb(async ({ params: { movieID } }) => ({
-    props: {
-      id: movieID as string
-    }
+    props: await GetMovieDetailProps(movieID || ``)
   }))(param);
 };
 

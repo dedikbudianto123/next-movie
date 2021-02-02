@@ -4,8 +4,8 @@ import { NextApiHandler } from 'next';
 
 import { ICSRFMiddleware } from '@/utils/modules/csrf/interface/csrf.interface';
 import { ErrorApps } from '@/utils/modules/error';
+import { NextAPICatchErrorHandler } from '@/utils/modules/next-api/helper/next-api-error.helper';
 
-import { NextAPICatchErrorHandler } from '../../next-api/helper/next-api-error.helper';
 import CSRFCookie from './csrf-cookie.helper';
 import CSRFTokens from './csrf-tokens.helper';
 

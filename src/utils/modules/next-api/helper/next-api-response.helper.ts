@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { INextAPIResponse } from '../interface/next-api.interface';
+import { INextAPIResponse } from '@/utils/modules/next-api/interface/next-api.interface';
 
 /**
  * Generate API Response APO
