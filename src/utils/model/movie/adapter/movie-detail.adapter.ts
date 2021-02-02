@@ -128,5 +128,5 @@ export const MovieDetailAPIAdapter: IAdapter<
     };
   }
 
-  throw new ErrorApps(500, `basic info not generated`);
+  throw new ErrorApps(500, `Movie not found`);
 };

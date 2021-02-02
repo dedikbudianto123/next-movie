@@ -4,7 +4,10 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import { VerifiedIsNotEmpty } from '@/utils/helper/validator.helper';
 import CorsBuilder from '@/utils/modules/cors/builder/cors.builder';
 import { ICorsHandler } from '@/utils/modules/cors/interface/cors.interface';
-import { NextAPIError404 } from '@/utils/modules/next-api/helper/next-api-error.helper';
+import {
+  NextAPICatchErrorHandler,
+  NextAPIError404
+} from '@/utils/modules/next-api/helper/next-api-error.helper';
 
 /**
  * Cors Generator
@@ -48,7 +51,11 @@ export function CorsDecoratorGenerator(
             return NextAPIError404.apply(this, [req, res]);
           }
 
-          return childFunction.apply(this, [req, res]);
+          try {
+            return childFunction.apply(this, [req, res]);
+          } catch (e) {
+            return NextAPICatchErrorHandler(e).apply(this, [req, res]);
+          }
         });
       }) as unknown) as T;
     }

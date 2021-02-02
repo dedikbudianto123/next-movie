@@ -6,7 +6,7 @@ import { VerifiedIsNotEmpty } from '@/utils/helper/validator.helper';
  * @since 2021.01.24
  */
 export class ErrorApps extends Error {
-  constructor(private status = 403, message: string, ...params: undefined[]) {
+  constructor(public status = 403, message: string, ...params: undefined[]) {
     super(...params);
 
     if (VerifiedIsNotEmpty(Error.captureStackTrace)) {
