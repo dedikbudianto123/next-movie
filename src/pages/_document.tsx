@@ -32,9 +32,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <style>{`body { display: block !important }`}</style>
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
