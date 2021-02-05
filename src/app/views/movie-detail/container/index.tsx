@@ -1,9 +1,8 @@
 import { FC } from 'react';
 
-import { IMovieDetailProps } from '@/container/movie-detail/interface';
-
-import MovieDetailBody from './components/organisms/body';
-import MovieDetailHead from './components/organisms/head';
+import MovieDetailBody from '@/app/views/movie-detail/components/organisms/body';
+import MovieDetailHead from '@/app/views/movie-detail/components/organisms/head';
+import { IMovieDetailProps } from '@/app/views/movie-detail/interface';
 
 /**
  * Movie Detail

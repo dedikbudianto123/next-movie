@@ -12,14 +12,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => (
 );
 
 MyApp.getInitialProps = async (appContext): Promise<AppInitialProps> => {
-  const { csrfToken } = require(`@/utils/modules/csrf`);
   const appProps = await App.getInitialProps(appContext);
 
   return {
     ...appProps,
     pageProps: {
       ...appProps.pageProps,
-      csrfToken,
       isLoggedIn: true
     }
   };
