@@ -14,7 +14,7 @@ const MovieDetail: FC<IMovieDetailProps> = ({ movie }) => {
     return (
       <>
         <MovieDetailHead title={movie.title} />
-        <MovieDetailBody movie={movie} />
+        <MovieDetailBody {...movie} />
       </>
     );
   }

@@ -1,13 +1,13 @@
 import { FC } from 'react';
 
-import { IMovieDetailProps } from '@/app/views/movie-detail/interface';
+import { IMovieDetail } from '@/library/model/movie/interface/movie-detail.interface';
 
 /**
  * Movie Detail
  * @param {props} props - props page
  * @returns {ReactNode}
  */
-const MovieDetailBody: FC<IMovieDetailProps> = ({ movie }) => {
+const MovieDetailBody: FC<IMovieDetail | undefined> = (movie) => {
   if (movie) {
     return (
       <>
