@@ -1,4 +1,4 @@
-import { IMovieDetail } from '@/utils/model/movie/interface/movie-detail.interface';
+import { IMovieDetail } from '@/library/model/movie/interface/movie-detail.interface';
 
 /**
  * Movie Detail Props Interface

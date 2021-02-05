@@ -4,17 +4,17 @@ import {
   BulkVerifiedIsNotEmpty,
   BulkVerifiedIsNotNull,
   VerifiedIsNotEmpty
-} from '@/utils/helper/validator.helper';
-import { UseCors } from '@/utils/modules/cors';
-import { UseCSRF } from '@/utils/modules/csrf';
-import { ErrorApps } from '@/utils/modules/error';
-import { NextAPIGet } from '@/utils/modules/next-api';
-import { NextAPIPromiseCatchErrorHandler } from '@/utils/modules/next-api/helper/next-api-error.helper';
-import { NextAPIResponse } from '@/utils/modules/next-api/helper/next-api-response.helper';
-import MovieRepositoryImplementation from '@/utils/repository/rest-api/movie';
+} from '@/library/helper/validator.helper';
+import { UseCors } from '@/library/modules/cors';
+import { UseCSRF } from '@/library/modules/csrf';
+import { ErrorApps } from '@/library/modules/error';
+import { NextAPIGet } from '@/library/modules/next-api';
+import { NextAPIPromiseCatchErrorHandler } from '@/library/modules/next-api/helper/next-api-error.helper';
+import { NextAPIResponse } from '@/library/modules/next-api/helper/next-api-response.helper';
+import MovieRepositoryImplementation from '@/library/repository/rest-api/movie';
 
 /**
- * Sample Controller Class
+ * Movie Controller Class
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.26
  */

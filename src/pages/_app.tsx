@@ -1,6 +1,6 @@
 import App, { AppInitialProps, AppProps } from 'next/app';
 
-import '@/utils/styles/css/global.css';
+import '@/library/styles/css/global.css';
 
 /**
  * My APP

@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import MovieDetailContainer from '@/container/movie-detail/client-side/movie-detail.container';
+import MovieDetailContainer from '@/container/movie-detail/client-side';
 import { GetMovieDetailProps } from '@/container/movie-detail/server-side';
 
 /**
