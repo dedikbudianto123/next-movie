@@ -4,7 +4,7 @@
  * @since 2021.02.05
  */
 export interface ISeoProps {
-  linkTag?: string[];
-  metaTag?: string[];
-  title?: string;
+  linkTag?: React.LinkHTMLAttributes<HTMLLinkElement>[];
+  metaTag?: React.MetaHTMLAttributes<HTMLMetaElement>[];
+  title?: React.HTMLAttributes<HTMLTitleElement>;
 }

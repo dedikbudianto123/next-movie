@@ -10,6 +10,7 @@ import { ISeoProps } from './seo.interface';
 export interface IBaseProps {
   csrfToken: string;
   language: ILanguagePreset;
+  withRedux: boolean;
   // TODO: will add aditional props
 }
 

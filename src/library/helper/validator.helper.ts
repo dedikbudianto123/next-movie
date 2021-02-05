@@ -45,3 +45,24 @@ export const BulkVerifiedIsNotNull = (param: unknown[]): boolean =>
  */
 export const IsNumber = (param: unknown): boolean =>
   typeof param === `number` || typeof param === `bigint`;
+
+/**
+ * Verified Key Is Available
+ * @param {DefaultDynamicObject} obj
+ * @param {string} key
+ * @return {boolean}
+ */
+export const VerifiedKeyIsExist = (
+  obj: Record<string, unknown>,
+  key: string | undefined
+): boolean => {
+  try {
+    if (key) {
+      return Object.prototype.hasOwnProperty.call(obj, key);
+    }
+
+    return false;
+  } catch (e) {
+    return false;
+  }
+};

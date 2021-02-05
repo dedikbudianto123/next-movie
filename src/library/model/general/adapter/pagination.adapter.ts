@@ -1,5 +1,5 @@
 import { ValidateNumberAndParsedToInteger } from '@/library/helper/string.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
+import { IAdapter } from '@/library/interface/general';
 import { IRootObjectListAPIResponse } from '@/library/interface/generated/list-api.interface';
 import { IPagination } from '@/library/model/general/interface/pagination.interface';
 

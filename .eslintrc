@@ -68,6 +68,7 @@
             }
         ],
         // custom rules
+        "import/no-dynamic-require": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "global-require": "off",
