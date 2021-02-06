@@ -1,7 +1,7 @@
-import { ValidateNumberAndParsedToInteger } from '@/library/helper/string.helper';
+import { ValidateNumberAndParsedToInteger } from '@/library/helper';
 import { IAdapter } from '@/library/interface/general';
-import { IRootObjectListAPIResponse } from '@/library/interface/generated/list-api.interface';
-import { IPagination } from '@/library/model/general/interface/pagination.interface';
+import { IRootObjectListAPIResponse } from '@/library/interface/generated';
+import { IPagination } from '@/library/model/general/interface';
 
 /**
  * Pagination API Adapter

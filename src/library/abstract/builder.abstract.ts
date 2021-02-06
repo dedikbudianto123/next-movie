@@ -1,4 +1,4 @@
-import { IBuilder } from './interface/builder.interface';
+import { IBuilder } from './interface';
 
 /**
  * Builder Abstract

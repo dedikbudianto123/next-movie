@@ -1,7 +1,7 @@
-import { BulkVerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { IRatingApiResponse } from '@/library/interface/generated/detail-api.interface';
-import { IRatingItem } from '@/library/model/general/interface/rating.interface';
+import { BulkVerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
+import { IRatingApiResponse } from '@/library/interface/generated';
+import { IRatingItem } from '@/library/model/general/interface';
 
 /**
  * Rating Item API Adapter

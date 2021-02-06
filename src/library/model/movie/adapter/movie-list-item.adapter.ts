@@ -1,9 +1,9 @@
-import { MOVIE_NOT_FOUND_POSTER } from '@/library/constant/movie.constant';
-import { BulkVerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { ISearchItemAPIResponse } from '@/library/interface/generated/list-api.interface';
-import { IMovieType } from '@/library/interface/movie/movie-type.interface';
-import { IMovieListItem } from '@/library/model/movie/interface/movie-list.interface';
+import { MOVIE_NOT_FOUND_POSTER } from '@/library/constant';
+import { BulkVerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
+import { ISearchItemAPIResponse } from '@/library/interface/generated';
+import { IMovieType } from '@/library/interface/movie';
+import { IMovieListItem } from '@/library/model/movie/interface';
 
 /**
  * Movie List Item API Adapter

@@ -1,8 +1,8 @@
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IMovieDetail as Detail } from '@/library/model/movie/interface/movie-detail.interface';
+import { VerifiedIsNotEmpty } from '@/library/helper';
+import { IMovieDetail as Detail } from '@/library/model/movie/interface';
 import { Get } from '@/library/modules/fetch-api';
-import { INextAPIResponse as API } from '@/library/modules/next-api/interface/next-api.interface';
-import { GenerateServerSideProps } from '@/library/modules/page-generator/helper/page-server-side.helper';
+import { INextAPIResponse as API } from '@/library/modules/next-api/interface';
+import { GenerateServerSideProps } from '@/library/modules/page-generator/helper';
 
 /**
  * Get Server Side Props Lifecycle

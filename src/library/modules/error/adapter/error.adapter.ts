@@ -1,7 +1,7 @@
-import { IAdapter } from '@/library/interface/general/adapter.interface';
+import { IAdapter } from '@/library/interface/general';
 import { ErrorApps } from '@/library/modules/error';
-import { IGNORE_ERROR_CODE } from '@/library/modules/error/constant/error.constant';
-import { IErrorApps } from '@/library/modules/error/interface/error.interface';
+import { IGNORE_ERROR_CODE } from '@/library/modules/error/constant';
+import { IErrorApps } from '@/library/modules/error/interface';
 
 /**
  * Error Adapter

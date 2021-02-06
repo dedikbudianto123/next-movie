@@ -1,7 +1,7 @@
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { IRootObjectDetailAPIResponse } from '@/library/interface/generated/detail-api.interface';
-import { IRating } from '@/library/model/general/interface/rating.interface';
+import { VerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
+import { IRootObjectDetailAPIResponse } from '@/library/interface/generated';
+import { IRating } from '@/library/model/general/interface';
 
 import { RatingItemAPIAdapter } from './rating-item.adapter';
 

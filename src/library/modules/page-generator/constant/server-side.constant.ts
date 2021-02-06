@@ -6,8 +6,7 @@ export const DEFAULT_PROPS_ERROR: GetServerSidePropsResult<IDefaulError500Props>
   props: {
     base: {
       csrfToken: ``,
-      language: `id`,
-      withRedux: false
+      language: `id`
     },
     error: {
       message: `unknown error`

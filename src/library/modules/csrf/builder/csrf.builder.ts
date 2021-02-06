@@ -7,19 +7,19 @@ import {
 } from 'next';
 
 import BuilderAbstract from '@/library/abstract/builder.abstract';
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { CSRF_DEFAULT_OPTIONS } from '@/library/modules/csrf/constant/csrf.constant';
-import CSRFGenerator from '@/library/modules/csrf/helper/csrf-generator.helper';
+import { VerifiedIsNotEmpty } from '@/library/helper';
+import { CSRF_DEFAULT_OPTIONS } from '@/library/modules/csrf/constant';
 import {
+  CSRFGenerator,
   CSRFSetupAPIHelper,
-  CSRFSetupWebHelper
-} from '@/library/modules/csrf/helper/csrf-setup.helper';
-import CSRFTokens from '@/library/modules/csrf/helper/csrf-tokens.helper';
+  CSRFSetupWebHelper,
+  CSRFTokens
+} from '@/library/modules/csrf/helper';
 import {
   ICSRFBuilder,
   ICSRFMiddleware,
   ICSRFOptions
-} from '@/library/modules/csrf/interface/csrf.interface';
+} from '@/library/modules/csrf/interface';
 
 /**
  * CSRF Builder

@@ -1,5 +1,5 @@
-import { IDefaultPageProps } from '@/library/interface/general/base.interface';
-import { IMovieDetail } from '@/library/model/movie/interface/movie-detail.interface';
+import { IDefaultPageProps } from '@/library/interface/general';
+import { IMovieDetail } from '@/library/model/movie/interface';
 
 /**
  * Movie Detail Props Interface

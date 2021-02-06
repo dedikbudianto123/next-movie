@@ -1,14 +1,14 @@
 import Tokens from 'csrf';
 import { NextApiRequest } from 'next';
 
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
+import { VerifiedIsNotEmpty } from '@/library/helper';
 
 /**
  * CSRF Tokens Instance Singleton
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.24
  */
-class CSRFTokens {
+export class CSRFTokens {
   private static tokens: Tokens | undefined;
 
   /**
@@ -42,5 +42,3 @@ export const getTokenHeader = (
 
   return ``;
 };
-
-export default CSRFTokens;

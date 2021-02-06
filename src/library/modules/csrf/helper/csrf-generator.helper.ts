@@ -2,19 +2,19 @@ import { serialize } from 'cookie';
 import { sign, unsign } from 'cookie-signature';
 import { NextApiHandler } from 'next';
 
-import { ICSRFMiddleware } from '@/library/modules/csrf/interface/csrf.interface';
+import { ICSRFMiddleware } from '@/library/modules/csrf/interface';
 import { ErrorApps } from '@/library/modules/error';
-import { NextAPICatchErrorHandler } from '@/library/modules/next-api/helper/next-api-error.helper';
+import { NextAPICatchErrorHandler } from '@/library/modules/next-api/helper';
 
-import CSRFCookie from './csrf-cookie.helper';
-import CSRFTokens from './csrf-tokens.helper';
+import { CSRFCookie } from './csrf-cookie.helper';
+import { CSRFTokens } from './csrf-tokens.helper';
 
 /**
  * CSRF Generator
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.24
  */
-const CSRFGenerator = (
+export const CSRFGenerator = (
   handler: NextApiHandler,
   {
     cookieOptions,
@@ -56,5 +56,3 @@ const CSRFGenerator = (
     return NextAPICatchErrorHandler(e)(req, res);
   }
 };
-
-export default CSRFGenerator;

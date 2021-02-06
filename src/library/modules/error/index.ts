@@ -1,2 +1,2 @@
-export * from './helper/error-apps.helper';
+export * from './helper';
 export * from './adapter/error.adapter';

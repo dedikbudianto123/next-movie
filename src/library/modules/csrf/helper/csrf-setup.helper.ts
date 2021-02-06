@@ -9,9 +9,9 @@ import {
   NextApiResponse
 } from 'next';
 
-import { ICSRFSetupMiddleware } from '@/library/modules/csrf/interface/csrf.interface';
+import { ICSRFSetupMiddleware } from '@/library/modules/csrf/interface';
 
-import CSRFTokens from './csrf-tokens.helper';
+import { CSRFTokens } from './csrf-tokens.helper';
 
 /**
  * CSRF Setup API Helper

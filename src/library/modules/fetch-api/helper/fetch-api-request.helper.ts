@@ -9,7 +9,7 @@ import axios, {
 import {
   IFetchAPIPromise,
   IFetchAPIResponse
-} from '@/library/modules/fetch-api/interface/fetch-api.interface';
+} from '@/library/modules/fetch-api/interface';
 
 import { FetchApiErrorHelper } from './fetch-api-error.helper';
 

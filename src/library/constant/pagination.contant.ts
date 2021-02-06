@@ -1,4 +1,4 @@
-import { IPagination } from '@/library/model/general/interface/pagination.interface';
+import { IPagination } from '@/library/model/general/interface';
 
 export const PER_PAGE = 10;
 

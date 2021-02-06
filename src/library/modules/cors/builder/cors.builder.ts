@@ -1,7 +1,7 @@
 import Cors, { CorsOptions, CorsOptionsDelegate } from 'cors';
 
 import BuilderAbstract from '@/library/abstract/builder.abstract';
-import { ICorsFunction } from '@/library/modules/cors/interface/cors.interface';
+import { ICorsFunction } from '@/library/modules/cors/interface';
 
 /**
  * Cors Builder

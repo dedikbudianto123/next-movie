@@ -1,7 +1,7 @@
-import { BulkVerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { IRootObjectDetailAPIResponse } from '@/library/interface/generated/detail-api.interface';
-import { IMovieFigure } from '@/library/model/movie/interface/movie-figure.interface';
+import { BulkVerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
+import { IRootObjectDetailAPIResponse } from '@/library/interface/generated';
+import { IMovieFigure } from '@/library/model/movie/interface';
 
 /**
  * Movie Figure API Adapter

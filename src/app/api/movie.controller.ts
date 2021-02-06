@@ -4,13 +4,15 @@ import {
   BulkVerifiedIsNotEmpty,
   BulkVerifiedIsNotNull,
   VerifiedIsNotEmpty
-} from '@/library/helper/validator.helper';
+} from '@/library/helper';
 import { UseCors } from '@/library/modules/cors';
 import { UseCSRF } from '@/library/modules/csrf';
 import { ErrorApps } from '@/library/modules/error';
 import { NextAPIGet } from '@/library/modules/next-api';
-import { NextAPIPromiseCatchErrorHandler } from '@/library/modules/next-api/helper/next-api-error.helper';
-import { NextAPIResponse } from '@/library/modules/next-api/helper/next-api-response.helper';
+import {
+  NextAPIPromiseCatchErrorHandler,
+  NextAPIResponse
+} from '@/library/modules/next-api/helper';
 import MovieRepositoryImplementation from '@/library/repository/rest-api/movie';
 
 /**

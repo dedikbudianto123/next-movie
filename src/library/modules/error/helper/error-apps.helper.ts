@@ -1,4 +1,4 @@
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
+import { VerifiedIsNotEmpty } from '@/library/helper';
 
 /**
  * Error

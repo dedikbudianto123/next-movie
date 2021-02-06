@@ -1,2 +1,4 @@
-export { getServerSideProps } from '@/app/views/movie-detail/server-side';
-export { default } from '@/app/views/movie-detail/client-side';
+import Components from '@/app/views/movie-detail/index';
+
+export { getServerSideProps } from '@/app/views/movie-detail/index';
+export default Components;

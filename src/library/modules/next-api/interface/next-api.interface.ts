@@ -1,4 +1,4 @@
-import { IErrorApps } from '@/library/modules/error/interface/error.interface';
+import { IErrorApps } from '@/library/modules/error/interface';
 
 /**
  * Next API Method Type

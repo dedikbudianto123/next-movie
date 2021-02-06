@@ -1,7 +1,7 @@
-import { BulkVerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { IRootObjectDetailAPIResponse } from '@/library/interface/generated/detail-api.interface';
-import { IScore } from '@/library/model/general/interface/score.interface';
+import { BulkVerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
+import { IRootObjectDetailAPIResponse } from '@/library/interface/generated';
+import { IScore } from '@/library/model/general/interface';
 
 /**
  * Score API Adapter

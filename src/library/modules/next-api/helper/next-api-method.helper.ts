@@ -1,7 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { INextAPIMethod } from '@/library/modules/next-api/interface/next-api.interface';
+import { VerifiedIsNotEmpty } from '@/library/helper';
+import { INextAPIMethod } from '@/library/modules/next-api/interface';
 
 import {
   NextAPICatchErrorHandler,

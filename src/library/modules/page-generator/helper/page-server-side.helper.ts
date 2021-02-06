@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 
-import { VerifiedKeyIsExist } from '@/library/helper/validator.helper';
-import { IDefaultPageProps } from '@/library/interface/general/base.interface';
+import { VerifiedKeyIsExist } from '@/library/helper';
+import { IDefaultPageProps } from '@/library/interface/general';
 import { csrfToken, setupWeb } from '@/library/modules/csrf';
 import { ErrorApps } from '@/library/modules/error';
 import { DEFAULT_PROPS_ERROR } from '@/library/modules/page-generator/constant';
@@ -27,8 +27,7 @@ export const GenerateServerSideProps = (
           ...res,
           base: {
             ...base,
-            csrfToken,
-            withRedux: true
+            csrfToken
           },
           seo: {}
         }

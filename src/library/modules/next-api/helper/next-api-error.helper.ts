@@ -1,7 +1,7 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 import { ErrorAdapter, ErrorApps } from '@/library/modules/error';
-import { IErrorApps } from '@/library/modules/error/interface/error.interface';
+import { IErrorApps } from '@/library/modules/error/interface';
 
 /**
  * Generate Error API Response

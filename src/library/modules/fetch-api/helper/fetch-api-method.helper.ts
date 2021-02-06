@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-import { IFetchAPIPromise } from '@/library/modules/fetch-api/interface/fetch-api.interface';
+import { IFetchAPIPromise } from '@/library/modules/fetch-api/interface';
 
 import {
   generateRequestWithData,

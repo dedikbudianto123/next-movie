@@ -1,7 +1,7 @@
 import { parse } from 'cookie';
 import { NextApiRequest } from 'next';
 
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
+import { VerifiedIsNotEmpty } from '@/library/helper';
 
 /**
  * CSRF Cookie
@@ -21,5 +21,3 @@ export const CSRFCookie = (
 
   return ``;
 };
-
-export default CSRFCookie;

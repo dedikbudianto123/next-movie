@@ -1,10 +1,9 @@
-import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { IRootObjectDetailAPIResponse } from '@/library/interface/generated/detail-api.interface';
+import { VerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
+import { IRootObjectDetailAPIResponse } from '@/library/interface/generated';
 import { RatingAPIAdapter } from '@/library/model/general/adapter/rating.adapter';
 import { ScoreAPIAdapter } from '@/library/model/general/adapter/score.adapter';
-import { IMovieDetail } from '@/library/model/movie/interface/movie-detail.interface';
-import { IMovieListItem } from '@/library/model/movie/interface/movie-list.interface';
+import { IMovieDetail, IMovieListItem } from '@/library/model/movie/interface';
 import { ErrorApps } from '@/library/modules/error';
 
 import { MovieFigureAPIAdapter } from './movie-figure.adapter';

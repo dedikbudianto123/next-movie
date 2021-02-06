@@ -1,7 +1,4 @@
-import {
-  CorsDecoratorGenerator,
-  CorsGenerator
-} from './helper/cors-generator.helper';
+import { CorsDecoratorGenerator, CorsGenerator } from './helper';
 
 const corsInstance = CorsGenerator();
 

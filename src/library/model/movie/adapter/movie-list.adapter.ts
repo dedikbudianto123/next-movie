@@ -1,16 +1,12 @@
+import { DEFAULT_PAGINATION, PER_PAGE } from '@/library/constant';
+import { BulkVerifiedIsNotEmpty, VerifiedIsNotEmpty } from '@/library/helper';
+import { IAdapter } from '@/library/interface/general';
 import {
-  DEFAULT_PAGINATION,
-  PER_PAGE
-} from '@/library/constant/pagination.contant';
-import {
-  BulkVerifiedIsNotEmpty,
-  VerifiedIsNotEmpty
-} from '@/library/helper/validator.helper';
-import { IAdapter } from '@/library/interface/general/adapter.interface';
-import { IRootObjectAPIErrorResponse } from '@/library/interface/generated/error-api.interface';
-import { IRootObjectListAPIResponse } from '@/library/interface/generated/list-api.interface';
+  IRootObjectAPIErrorResponse,
+  IRootObjectListAPIResponse
+} from '@/library/interface/generated';
 import { PaginationAPIAdapter } from '@/library/model/general/adapter/pagination.adapter';
-import { IMovieList } from '@/library/model/movie/interface/movie-list.interface';
+import { IMovieList } from '@/library/model/movie/interface';
 
 import { MovieListItemAPIAdapter } from './movie-list-item.adapter';
 
