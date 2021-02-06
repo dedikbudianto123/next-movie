@@ -12,15 +12,15 @@ export interface IClientSideHandler {
 }
 
 /**
- * Client Side Handler Type
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.02.05
- */
-export type IClientSideHandlerType = FC | IClientSideHandlerHOC;
-
-/**
  * Client Side Handler HOC
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.02.05
  */
 export type IClientSideHandlerHOC = (component: FC) => FC;
+
+/**
+ * Client Side Handler Type
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.02.05
+ */
+export type IClientSideHandlerType = FC | IClientSideHandlerHOC;

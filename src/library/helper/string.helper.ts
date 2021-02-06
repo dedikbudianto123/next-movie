@@ -1,4 +1,16 @@
 /**
+ * Object To String
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @param {Record<string, string>} obj - object classname
+ * @since 2021.01.24
+ */
+export const ObjToString = (obj: Record<string, boolean>): string =>
+  Object.keys(obj)
+    .filter((item: string) => obj[item])
+    .map((item: string) => item)
+    .join(` `);
+
+/**
  * Validate Number And Parsed To Integer
  * @author Irfan Andriansyah <irfan@99.co>
  * @param {unknown} number - parameter for parsing this method
@@ -15,15 +27,3 @@ export const ValidateNumberAndParsedToInteger = (number: unknown): number => {
 
   return 0;
 };
-
-/**
- * Object To String
- * @author Irfan Andriansyah <irfan@99.co>
- * @param {Record<string, string>} obj - object classname
- * @since 2021.01.24
- */
-export const ObjToString = (obj: Record<string, boolean>): string =>
-  Object.keys(obj)
-    .filter((item: string) => obj[item])
-    .map((item: string) => item)
-    .join(` `);
