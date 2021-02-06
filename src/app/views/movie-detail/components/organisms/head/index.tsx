@@ -6,9 +6,8 @@ import { FC } from 'react';
  * @param {props} props - props page
  * @returns {ReactNode}
  */
-const MovieDetailHead: FC<{ title: string }> = ({ title }) => (
+const MovieDetailHead: FC<{ title: string }> = () => (
   <Head>
-    <title>Movie Detail : {title}</title>
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   </Head>
 );

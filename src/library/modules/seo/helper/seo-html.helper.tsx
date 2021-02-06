@@ -14,11 +14,12 @@ export const SEOHTMLGenerator: FC<IDefaultPageProps> = ({
 }) => (
   <>
     <Head>
-      {title && <title {...title} />}
+      {title && <title>{title}</title>}
       {linkTag &&
         linkTag.map(({ href, rel, ...res }) => (
           <link key={`${href}-${rel}`} href={href} rel={rel} {...res} />
         ))}
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       {metaTag &&
         metaTag.map(({ content, name, ...res }) => (
           <meta
@@ -36,6 +37,6 @@ SEOHTMLGenerator.propTypes = {
   seo: PropTypes.shape({
     linkTag: PropTypes.arrayOf(PropTypes.shape({})),
     metaTag: PropTypes.arrayOf(PropTypes.shape({})),
-    title: PropTypes.shape({})
+    title: PropTypes.string
   }).isRequired
 };
