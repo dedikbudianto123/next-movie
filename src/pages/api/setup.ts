@@ -1,4 +1,4 @@
-import { setupAPI } from '@/utils/modules/csrf';
+import { setupAPI } from '@/library/modules/csrf';
 
 /**
  * Sample Setup API

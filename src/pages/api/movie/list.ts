@@ -1,4 +1,4 @@
-import MovieController from '@/controller/movie.controller';
+import MovieController from '@/app/api/movie.controller';
 
 const service = MovieController.getInstance().getMovieList;
 
