@@ -18,6 +18,15 @@ const GenerateErrorAPIResponse = (error: IErrorApps): NextApiHandler => (
 };
 
 /**
+ * Next API Catch Error Handler
+ * @param {NextApiRequest} req - request api
+ * @param {NextApiResponse} res - response api
+ * @returns {void}
+ */
+export const NextAPICatchErrorHandler = (e: any): NextApiHandler =>
+  GenerateErrorAPIResponse(ErrorAdapter(e));
+
+/**
  * Next API Error 404
  * @param {NextApiRequest} req - request api
  * @param {NextApiResponse} res - response api
@@ -26,15 +35,6 @@ const GenerateErrorAPIResponse = (error: IErrorApps): NextApiHandler => (
 export const NextAPIError404: NextApiHandler = GenerateErrorAPIResponse(
   ErrorAdapter(new ErrorApps(404, `Page not found`))
 );
-
-/**
- * Next API Catch Error Handler
- * @param {NextApiRequest} req - request api
- * @param {NextApiResponse} res - response api
- * @returns {void}
- */
-export const NextAPICatchErrorHandler = (e: any): NextApiHandler =>
-  GenerateErrorAPIResponse(ErrorAdapter(e));
 
 /**
  * Next API Promise Catch Error Handler

@@ -46,6 +46,21 @@ const GenerateMethodAPI = (methodType: INextAPIMethod[]) => (
 };
 
 /**
+ * Next API Custom
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.01.26
+ */
+export const NextAPICustom = (methodType: INextAPIMethod[]) =>
+  GenerateMethodAPI(methodType);
+
+/**
+ * Next API Delete
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.01.26
+ */
+export const NextAPIDelete = () => GenerateMethodAPI([`DELETE`]);
+
+/**
  * Next API Get
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.26
@@ -67,18 +82,3 @@ export const NextAPIPost = () => GenerateMethodAPI([`POST`]);
 export function NextAPIPut() {
   return GenerateMethodAPI([`PUT`]);
 }
-
-/**
- * Next API Delete
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.01.26
- */
-export const NextAPIDelete = () => GenerateMethodAPI([`DELETE`]);
-
-/**
- * Next API Custom
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.01.26
- */
-export const NextAPICustom = (methodType: INextAPIMethod[]) =>
-  GenerateMethodAPI(methodType);

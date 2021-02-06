@@ -24,7 +24,8 @@
         "simple-import-sort",
         "sort-destructure-keys",
         "sort-keys-fix",
-        "react-hooks"
+        "react-hooks",
+        "sort-exports"
     ],
     "extends":[
         "airbnb",
@@ -68,6 +69,7 @@
             }
         ],
         // custom rules
+        "sort-exports/sort-exports": ["error", {"sortDir": "asc"}],
         "import/no-dynamic-require": "off",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",

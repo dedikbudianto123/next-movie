@@ -3,27 +3,11 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
 import { VerifiedIsNotEmpty } from '@/library/helper/validator.helper';
 import CorsBuilder from '@/library/modules/cors/builder/cors.builder';
-import { ICorsHandler } from '@/library/modules/cors/interface/cors.interface';
+import { ICorsHandler } from '@/library/modules/cors/interface';
 import {
   NextAPICatchErrorHandler,
   NextAPIError404
-} from '@/library/modules/next-api/helper/next-api-error.helper';
-
-/**
- * Cors Generator
- * @returns {ICorsHandler}
- */
-export function CorsGenerator(): ICorsHandler {
-  return (req, res, options) =>
-    new Promise((resolve, reject) => {
-      new CorsBuilder().setOptions(options).execute()(req, res, (err) => {
-        if (err instanceof Error) {
-          return reject(err);
-        }
-        return resolve(err);
-      });
-    });
-}
+} from '@/library/modules/next-api/helper';
 
 /**
  * Cors Generator Decorator
@@ -62,4 +46,20 @@ export function CorsDecoratorGenerator(
 
     return clone;
   };
+}
+
+/**
+ * Cors Generator
+ * @returns {ICorsHandler}
+ */
+export function CorsGenerator(): ICorsHandler {
+  return (req, res, options) =>
+    new Promise((resolve, reject) => {
+      new CorsBuilder().setOptions(options).execute()(req, res, (err) => {
+        if (err instanceof Error) {
+          return reject(err);
+        }
+        return resolve(err);
+      });
+    });
 }

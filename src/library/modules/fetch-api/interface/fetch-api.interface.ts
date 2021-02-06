@@ -1,6 +1,13 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 /**
+ * Promise Fetch API Response
+ * @author Irfan Andriansyah <irfan@99.co>
+ * @since 2021.01.25
+ */
+export type IFetchAPIPromise<T> = Promise<IFetchAPIResponse<T>>;
+
+/**
  * Fetch API Response
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.01.25
@@ -11,19 +18,13 @@ export interface IFetchAPIResponse<T> {
 }
 
 /**
- * Promise Fetch API Response
- * @author Irfan Andriansyah <irfan@99.co>
- * @since 2021.01.25
- */
-export type IFetchAPIPromise<T> = Promise<IFetchAPIResponse<T>>;
-
-/**
  * Fetch With Data Interface
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.02.05
  */
-export type IFetchAPIWithoutData<Response> = (
+export type IFetchAPIWithData<Response, Parameter> = (
   url: string,
+  data: Parameter,
   config?: AxiosRequestConfig,
   instance?: AxiosInstance
 ) => IFetchAPIPromise<Response>;
@@ -33,9 +34,8 @@ export type IFetchAPIWithoutData<Response> = (
  * @author Irfan Andriansyah <irfan@99.co>
  * @since 2021.02.05
  */
-export type IFetchAPIWithData<Response, Parameter> = (
+export type IFetchAPIWithoutData<Response> = (
   url: string,
-  data: Parameter,
   config?: AxiosRequestConfig,
   instance?: AxiosInstance
 ) => IFetchAPIPromise<Response>;

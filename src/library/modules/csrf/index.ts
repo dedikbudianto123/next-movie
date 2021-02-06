@@ -10,8 +10,8 @@ const {
   secret: process.env.CSRF_SECRET
 });
 
-export const csrfToken = token;
-export const csrf = handler;
 export const UseCSRF = decorator;
+export const csrf = handler;
+export const csrfToken = token;
 export const setupAPI = api;
 export const setupWeb = web;
