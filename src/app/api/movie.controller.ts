@@ -8,6 +8,7 @@ import {
 import { UseCors } from '@/library/modules/cors';
 import { UseCSRF } from '@/library/modules/csrf';
 import { ErrorApps } from '@/library/modules/error';
+import { SingletonLogger } from '@/library/modules/error/helper/singleton-logger.helper';
 import { NextAPIGet } from '@/library/modules/next-api';
 import {
   NextAPIPromiseCatchErrorHandler,
@@ -45,6 +46,9 @@ class MovieController {
         .then(NextAPIResponse(req, res))
         .catch(NextAPIPromiseCatchErrorHandler(req, res));
     } else if (formattedPage <= 0) {
+      SingletonLogger.getInstance().info(
+        `Page param is not number or page lower than 0`
+      );
       throw new ErrorApps(500, `Page param is not number or page lower than 0`);
     } else {
       throw new ErrorApps(500, `Keyword / page not found`);
